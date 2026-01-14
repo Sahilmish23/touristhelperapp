@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varanasi Tourist Helper</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons CDN -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Using Inter font, as it's a clean default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the active tab icon/text */
+        .tab-active {
+            color: #fb923c; /* orange-400 */
+        }
+        /* Hide content sections by default */
+        .tab-content {
+            display: none;
+        }
+        /* Show the active content section */
+        .tab-content.active {
+            display: block;
+        }
+        /* Custom background image style for the main app container */
+        .app-background {
+            background-image: url('https://images.unsplash.com/photo-1598440942540-0235951664c3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Makes the background stay in place on scroll */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Main App Container -->
+    <div class="container mx-auto max-w-lg min-h-screen shadow-xl relative app-background">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        
+        <!-- Sticky Header -->
+        <header class="bg-slate-900 p-6 shadow-md sticky top-0 z-10 relative">
+            <h1 class="text-3xl font-bold text-white text-center">Varanasi Tourist Helper</h1>
+            <p class="text-center text-white text-opacity-80 mt-1">Your simple guide to the holy city</p>
+        </header>
+
+        <!-- Sticky Navigation Bar -->
+        <nav class="sticky top-[112px] z-10 bg-white border-b border-gray-200 shadow-md flex justify-around relative">
+            <button class="tab-button flex-1 py-3 px-2 text-center text-gray-500 hover:text-orange-400 transition-colors duration-200" data-tab="explore" data-icon="map-pin">
+                <i class="ph ph-map-pin-line text-2xl block mx-auto"></i>
+                <span class="text-xs sm:text-sm">Explore</span>
+            </button>
+            <button class="tab-button flex-1 py-3 px-2 text-center text-gray-500 hover:text-orange-400 transition-colors duration-200" data-tab="food" data-icon="bowl-food">
+                <i class="ph ph-bowl-food text-2xl block mx-auto"></i>
+                <span class="text-xs sm:text-sm">Eat</span>
+            </button>
+            <button class="tab-button flex-1 py-3 px-2 text-center text-gray-500 hover:text-orange-400 transition-colors duration-200" data-tab="hotels" data-icon="bed">
+                <i class="ph ph-bed text-2xl block mx-auto"></i>
+                <span class="text-xs sm:text-sm">Stay</span>
+            </button>
+            <button class="tab-button flex-1 py-3 px-2 text-center text-gray-500 hover:text-orange-400 transition-colors duration-200" data-tab="navigate" data-icon="map-trifold">
+                <i class="ph ph-map-trifold text-2xl block mx-auto"></i>
+                <span class="text-xs sm:text-sm">Navigate</span>
+            </button>
+            <button class="tab-button flex-1 py-3 px-2 text-center text-gray-500 hover:text-orange-400 transition-colors duration-200" data-tab="info" data-icon="info">
+                <i class="ph ph-info text-2xl block mx-auto"></i>
+                <span class="text-xs sm:text-sm">Info</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="p-5 sm:p-8 relative">
+
+            <!-- Explore Section -->
+            <section id="explore" class="tab-content active">
+                <h2 class="text-2xl font-bold text-slate-900 mb-5">Explore Varanasi</h2>
+                
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Must-Visit Places</h3>
+                <div class="space-y-4">
+                    <!-- Place Card: Kashi Vishwanath -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kashi+Vishwanath+Temple+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://i.pinimg.com/originals/8f/37/41/8f374101cb4c0710960ae0085a395a83.jpg" 
+                                 alt="Kashi Vishwanath Temple"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Kashi+Vishwanath'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Kashi Vishwanath Temple</h3>
+                            <p class="text-gray-600 mt-1">One of the most famous Hindu temples dedicated to Lord Shiva. A cornerstone of faith in Varanasi.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kashi+Vishwanath+Temple+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Place Card: Sarnath -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sarnath+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse3.mm.bing.net/th/id/OIP.rqIorOH8pB_QZ0inU7keCQHaE7?pid=Api&P=0&h=180" 
+                                 alt="Sarnath"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Sarnath'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Sarnath</h3>
+                            <p class="text-gray-600 mt-1">A short drive from Varanasi, this is the deer park where Lord Buddha gave his first sermon. A peaceful and historic site.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sarnath+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                     <!-- Place Card: BHU -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Banaras+Hindu+University+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://i.ytimg.com/vi/y_Neql8GKWI/maxresdefault.jpg" 
+                                 alt="Banaras Hindu University (BHU)"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=BHU'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Banaras Hindu University (BHU)</h3>
+                            <p class="text-gray-600 mt-1">A vast, green campus housing the New Vishwanath Temple and the Bharat Kala Bhavan museum.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Banaras+Hindu+University+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold text-slate-700 mt-8 mb-4">Famous Ghats</h3>
+                <div class="space-y-4">
+                    <!-- Ghat Card: Dashashwamedh -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Dashashwamedh+Ghat+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse3.mm.bing.net/th/id/OIP.a5q9TVrrpqhXrhtU6UwTuwHaHa?pid=Api&P=0&h=180" 
+                                 alt="Dashashwamedh Ghat"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Dashashwamedh+Ghat'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Dashashwamedh Ghat</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Famous for:</span> The spectacular evening Ganga Aarti ceremony. It's the busiest and most vibrant ghat.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Dashashwamedh+Ghat+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Ghat Card: Assi -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Assi+Ghat+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse1.mm.bing.net/th/id/OIP.3oGzs-90KTKipipx6UU65wHaEz?pid=Api&P=0&h=180" 
+                                 alt="Assi Ghat"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Assi+Ghat'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Assi Ghat</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Famous for:</span> Morning yoga, a more relaxed atmosphere, and the confluence of the Ganga and Assi rivers.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Assi+Ghat+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Ghat Card: Manikarnika -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Manikarnika+Ghat+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse1.mm.bing.net/th/id/OIP.O-5gQlYTntYdE0ZGOxdq-QHaEK?pid=Api&P=0&h=180" 
+                                 alt="Manikarnika Ghat"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Manikarnika+Ghat'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Manikarnika Ghat</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Famous for:</span> The main cremation ghat. A powerful place to observe Hindu funeral rituals. Photography is strictly prohibited.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Manikarnika+Ghat+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                View on Map
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Food Section -->
+            <section id="food" class="tab-content">
+                <h2 class="text-2xl font-bold text-slate-900 mb-5">Local Delicacies</h2>
+                <div class="space-y-4">
+                    <!-- Food Card: Kachori Sabzi -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Ram+Bhandar+Thatheri+Bazar+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse2.mm.bing.net/th/id/OIP.QRNRTnyplR431ybFOxBudQHaEG?pid=Api&P=0&h=180" 
+                                 alt="Kachori Sabzi"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Kachori+Sabzi'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Kachori Sabzi</h3>
+                            <p class="text-gray-600 mt-1">The classic Banarasi breakfast. Spicy, fried kachoris served with a flavorful potato curry.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ram+Bhandar+Thatheri+Bazar+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                Try at: Ram Bhandar
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Food Card: Tamatar Chaat -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kashi+Chat+Bhandar+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://tse2.mm.bing.net/th/id/OIP.MrHksyv5mnvdiQU83mWLwAHaEK?pid=Api&P=0&h=180" 
+                                 alt="Tamatar Chaat"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Tamatar+Chaat'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Tamatar Chaat</h3>
+                            <p class="text-gray-600 mt-1">A unique chaat made with tomatoes, boiled potatoes, spices, and sev. A tangy and savory delight.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kashi+Chat+Bhandar+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                Try at: Kashi Chat Bhandar
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Food Card: Lassi -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Blue+Lassi+Shop+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://media-cdn.tripadvisor.com/media/photo-s/08/d9/4b/94/blue-lassi.jpg" 
+                                 alt="Lassi"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Lassi'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Lassi</h3>
+                            <p class="text-gray-600 mt-1">Thick, creamy yogurt-based drink served in a 'kulhad' (earthen cup), often topped with malai or fruit.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Blue+Lassi+Shop+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                Try at: Blue Lassi Shop
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Food Card: Malaiyo -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Shreeji+Sweets+Varanasi" target="_blank" rel="noopener noreferrer">
+                            <img class="w-full h-48 object-cover" 
+                                 src="https://www.varanasiguru.com/wp-content/uploads/2019/10/best-malaiyo-in-varanasi.jpg" 
+                                 alt="Malaiyo"
+                                 onerror="this.src='https://placehold.co/600x400/f97316/white?text=Malaiyo'; this.onerror=null;">
+                        </a>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-gray-900">Malaiyo</h3>
+                            <p class="text-gray-600 mt-1">A seasonal (winter-only) dessert made from milk froth, saffron, and sugar. It's incredibly light and melts in your mouth.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Shreeji+Sweets+Varanasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-3 text-orange-600 hover:text-orange-700 font-semibold text-sm">
+                                Try at: Shreeji Sweets
+                                <i class="ph ph-arrow-square-out ml-1 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hotels Section -->
+            <section id="hotels" class="tab-content">
+                <h2 class="text-2xl font-bold text-slate-900 mb-5">Hotel Booking & Tips</h2>
+                
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Quick Booking Links</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <a href="https://www.booking.com/searchresults.html?ss=Varanasi" target="_blank" class="flex items-center justify-between bg-blue-100 p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <div>
+                            <p class="text-lg font-semibold text-blue-800">Booking.com</p>
+                            <p class="text-sm text-blue-600">Search Varanasi Hotels</p>
+                        </div>
+                        <i class="ph ph-arrow-square-out text-2xl text-blue-600"></i>
+                    </a>
+                    <a href="https://www.agoda.com/search?city=2862" target="_blank" class="flex items-center justify-between bg-purple-100 p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <div>
+                            <p class="text-lg font-semibold text-purple-800">Agoda</p>
+                            <p class="text-sm text-purple-600">Search Varanasi Hotels</p>
+                        </div>
+                        <i class="ph ph-arrow-square-out text-2xl text-purple-600"></i>
+                    </a>
+                    <a href="https://www.makemytrip.com/hotels/hotel-listing/?city=VARANASI" target="_blank" class="flex items-center justify-between bg-orange-100 p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <div>
+                            <p class="text-lg font-semibold text-orange-800">MakeMyTrip</p>
+                            <p class="text-sm text-orange-600">Search Varanasi Hotels</p>
+                        </div>
+                        <i class="ph ph-arrow-square-out text-2xl text-orange-600"></i>
+                    </a>
+                </div>
+
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Area Guide</h3>
+                <div class="space-y-4">
+                     <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                                <i class="ph ph-waves text-2xl text-orange-600"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Near the Main Ghats</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Best for:</span> Atmosphere, walking to temples, and boat rides.</p>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-red-600">Keep in mind:</span> Can be noisy, lanes are very narrow, and no car access to most hotels.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                                <i class="ph ph-coffee text-2xl text-orange-600"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Assi Ghat Area</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Best for:</span> A more relaxed, quieter vibe with many cafes. Popular with long-stay tourists.</p>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-red-600">Keep in mind:</span> Further from the Kashi Vishwanath temple (30-min walk).</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                                <i class="ph ph-train text-2xl text-orange-600"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Cantonment (Cantt.) Area</h3>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Best for:</span> Modern hotels, easy car/bus access, and proximity to the railway station.</p>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-red-600">Keep in mind:</span> Far from the old city and ghats. You will need to take a rickshaw (20-30 mins) for all sightseeing.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigate Section -->
+            <section id="navigate" class="tab-content">
+                <h2 class="text-2xl font-bold text-slate-900 mb-5">Navigate</h2>
+                
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">City Map</h3>
+                <div class="rounded-xl shadow-md overflow-hidden h-[300px] sm:h-[400px] mb-8">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        style="border:0"
+                        src="https://maps.google.com/maps?q=Varanasi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Local Transport</h3>
+                <div class="space-y-4">
+                    <!-- Transport Card: Rickshaws -->
+                    <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                                <i class="ph ph-bicycle text-2xl text-orange-600"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Auto-Rickshaws & E-Rickshaws</h3>
+                            <p class="text-gray-600 mt-1">Most common way to get around. E-Rickshaws are best for the main ghat areas.</p>
+                            <p class="text-gray-600 mt-2"><span class="font-semibold text-red-600">Important:</span> Always agree on a fare *before* you start your trip.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Transport Card: Ride-Hailing -->
+                    <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                                <i class="ph ph-car text-2xl text-orange-600"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Ride-Hailing Apps</h3>
+                            <p class="text-gray-600 mt-1">Ola and Uber operate in Varanasi and are convenient for fixed-price rides.</p>
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                 <a href="https://www.uber.com/in/en/" target="_blank" class="flex items-center justify-center bg-gray-200 p-3 rounded-xl shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300">
+                                    <p class="text-md font-semibold text-gray-800">Uber</p>
+                                    <i class="ph ph-arrow-square-out text-lg text-gray-600 ml-2"></i>
+                                 </a>
+                                <a href="https://www.olacabs.com/" target="_blank" class="flex items-center justify-center bg-cyan-100 p-3 rounded-xl shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300">
+                                    <p class="text-md font-semibold text-cyan-800">Ola</p>
+                                    <i class="ph ph-arrow-square-out text-lg text-cyan-600 ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section id="info" class="tab-content">
+                <h2 class="text-2xl font-bold text-slate-900 mb-5">Info & Help</h2>
+                
+                <!-- Card: Ganga Aarti -->
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Ganga Aarti Info</h3>
+                <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300 mb-6">
+                    <div class="flex-shrink-0">
+                        <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                            <i class="ph ph-fire text-2xl text-orange-600"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Ganga Aarti Ceremony</h3>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li><span class="font-semibold">Location:</span> Dashashwamedh Ghat.</li>
+                            <li><span class="font-semibold">Time:</span> Around 6:30 PM (after sunset).</li>
+                            <li><span class="font-semibold">Tip:</span> Arrive by 5:30 PM to get a good spot.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card: Do's & Don'ts -->
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Cultural Do's & Don'ts</h3>
+                <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300 mb-8">
+                     <div class="flex-shrink-0">
+                        <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                            <i class="ph ph-check-circle text-2xl text-orange-600"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Key Tips</h3>
+                         <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li class="text-green-700"><span class="text-gray-700 font-medium">DO dress modestly, covering shoulders and knees.</span></li>
+                            <li class="text-green-700"><span class="text-gray-700 font-medium">DO remove your shoes before entering temples.</span></li>
+                            <li class="text-red-600"><span class="text-gray-700 font-medium">DON'T take photos of cremations at Manikarnika Ghat.</span></li>
+                            <li class="text-red-600"><span class="text-gray-700 font-medium">DON'T point the soles of your feet at people or idols.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card: Emergency Contacts -->
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Emergency Contacts</h3>
+                <div class="space-y-4 mb-8">
+                    <a href="tel:112" class="flex items-center justify-between bg-red-100 p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <div>
+                            <p class="text-lg font-semibold text-red-800">All-in-One Emergency</p>
+                            <p class="text-2xl font-bold text-red-600">112</p>
+                        </div>
+                        <i class="ph ph-phone-call text-3xl text-red-600"></i>
+                    </a>
+                    <a href="tel:102" class="flex items-center justify-between bg-blue-100 p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <div>
+                            <p class="text-lg font-semibold text-blue-800">Ambulance</p>
+                            <p class="text-2xl font-bold text-blue-600">102 / 108</p>
+                        </div>
+                        <i class="ph ph-phone-call text-3xl text-blue-600"></i>
+                    </a>
+                </div>
+
+                <!-- Card: Common Phrases -->
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">Common Phrases</h3>
+                <div class="space-y-3 mb-8">
+                    <div class="bg-white rounded-xl shadow-md p-4">
+                        <p class="text-lg text-gray-800">Hello</p>
+                        <p class="text-xl font-semibold text-gray-600">Namaste</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-4">
+                        <p class="text-lg text-gray-800">Thank you</p>
+                        <p class="text-xl font-semibold text-gray-600">Dhanyavaad</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-4">
+                        <p class="text-lg text-gray-800">How much (is this)?</p>
+                        <p class="text-xl font-semibold text-gray-600">Kitne ka hai?</p>
+                    </div>
+                </div>
+
+                <!-- Card: OS Concept Note -->
+                <h3 class="text-xl font-semibold text-slate-700 mb-4">About This App</h3>
+                <div class="flex items-start space-x-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300">
+                    <div class="flex-shrink-0">
+                        <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+                            <i class="ph ph-gear-six text-2xl text-orange-600"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Developer's Note: An OS Concept</h3>
+                        <p class="text-gray-600 mt-1">This app's tabbing system is inspired by a core Operating System concept called <strong>Context Switching</strong>. Just like an OS switches between different programs (processes), this app 'switches context' by hiding the old tab and showing the new one, ensuring only one 'process' (the active tab) uses the screen at a time.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div> <!-- End of App Container -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function showTab(tabId) {
+                // Hide all content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // --- NEW ICON LOGIC ---
+                // Deactivate all buttons and reset icons to 'line'
+                tabButtons.forEach(button => {
+                    button.classList.remove('tab-active');
+                    button.classList.add('text-gray-500');
+                    
+                    const icon = button.querySelector('i');
+                    const iconName = button.dataset.icon;
+                    if (icon && iconName) {
+                        // Reset all icons to their 'line' version
+                        icon.className = `ph ph-${iconName}-line text-2xl block mx-auto`;
+                    }
+                });
+
+                // Show the selected tab content
+                const activeContent = document.getElementById(tabId);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
+
+                // Activate the selected button and set its icon to 'fill'
+                const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                if (activeButton) {
+                    activeButton.classList.add('tab-active');
+                    activeButton.classList.remove('text-gray-500');
+                    
+                    const activeIcon = activeButton.querySelector('i');
+                    const activeIconName = activeButton.dataset.icon;
+                    if (activeIcon && activeIconName) {
+                        // Set active icon to its 'fill' version
+                        activeIcon.className = `ph ph-${activeIconName}-fill text-2xl block mx-auto`;
+                    }
+                }
+            }
+
+            // Add click event listeners to tab buttons
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    showTab(tabId);
+                });
+            });
+
+            // Show the first tab by default
+            showTab('explore');
+        });
+    </script>
+
+</body>
+</html>
